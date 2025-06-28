@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnoehyrg8ovol"
-path="res://.godot/imported/Snipaste_2025-06-27_22-44-09.png-1bc8694766889abb9f41eb756f1df227.ctex"
+uid="uid://dnmpc1o35ngit"
+path="res://.godot/imported/ExcelPopup.png-ae072ed0b718a83c815acdb1d423f290.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Snipaste_2025-06-27_22-44-09.png"
-dest_files=["res://.godot/imported/Snipaste_2025-06-27_22-44-09.png-1bc8694766889abb9f41eb756f1df227.ctex"]
+source_file="res://Art/Tutorial/ExcelPopup.png"
+dest_files=["res://.godot/imported/ExcelPopup.png-ae072ed0b718a83c815acdb1d423f290.ctex"]
 
 [params]
 

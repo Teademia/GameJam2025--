@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Hero
+class_name Hero_tutorial
 
 signal move_platform
 

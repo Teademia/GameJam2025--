@@ -6,5 +6,5 @@ func _ready() -> void:
 	body_entered.connect(DetectHero)
 	
 func DetectHero(body: Node2D) -> void:
-	EXUManager.GameWin()
+	#EXUManager.GameWin()
 	print("Win")

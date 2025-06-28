@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qog2f35icmc"
-path="res://.godot/imported/GameWin.png-0933bb4bd56528052a93083e1e937c66.ctex"
+uid="uid://dbycwcyf310ey"
+path="res://.godot/imported/ExcelIcon.png-aba2d4c4f06001790bb751f740377b1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/GameWin.png"
-dest_files=["res://.godot/imported/GameWin.png-0933bb4bd56528052a93083e1e937c66.ctex"]
+source_file="res://Art/Tutorial/ExcelIcon.png"
+dest_files=["res://.godot/imported/ExcelIcon.png-aba2d4c4f06001790bb751f740377b1b.ctex"]
 
 [params]
 

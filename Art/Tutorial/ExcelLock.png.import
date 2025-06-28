@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blsm537rc0ph1"
-path="res://.godot/imported/未标题-2.png-a5a0024fcc929974a3c75878b98460e9.ctex"
+uid="uid://b17ui87a8d8gy"
+path="res://.godot/imported/ExcelLock.png-ffabcf6a3308e0a4745a0e463f7dfedd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/未标题-2.png"
-dest_files=["res://.godot/imported/未标题-2.png-a5a0024fcc929974a3c75878b98460e9.ctex"]
+source_file="res://Art/Tutorial/ExcelLock.png"
+dest_files=["res://.godot/imported/ExcelLock.png-ffabcf6a3308e0a4745a0e463f7dfedd.ctex"]
 
 [params]
 
