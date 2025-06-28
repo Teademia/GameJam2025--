@@ -8,7 +8,12 @@ class_name Hero
 ## === 内部常量 ===
 # 使用项目设置里的全局重力；如果想手动设置，请改成固定数值
 var GRAVITY : float = 1200
-
+func _ready() -> void:
+	$Area2D.area_entered.connect(Death)
+	
+func Death(area:Area2D)->void:
+	ExUManager.GameWin()
+	
 func _physics_process(delta: float) -> void:
 	### 1. 垂直方向：模拟重力
 	if not is_on_floor():

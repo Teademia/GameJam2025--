@@ -1,9 +1,15 @@
 extends Node2D
 class_name DesktopIcon
 
+signal HeroEnter
+signal HeroWantToInteract
 
-func Activate()->void:
-	pass
+func _ready() -> void:
+	$"DetectPlayer-Layer1".body_entered.connect(DetectHero)
 	
 func Interact()->void:
-	pass
+	HeroWantToInteract.emit()
+
+func DetectHero(body: Node2D) -> void:
+	print("HeroEnterDetct")
+	HeroEnter.emit()

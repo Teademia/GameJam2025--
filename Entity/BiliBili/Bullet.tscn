@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://rsgupea7g8am"]
+
+[ext_resource type="Texture2D" uid="uid://i8yxdaktrxdt" path="res://Art/音符.png" id="1_o8u6e"]
+[ext_resource type="Script" path="res://Entity/BiliBili/Bullet.gd" id="1_owk4l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rjsn"]
+radius = 50.0
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_owk4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_o8u6e")
+
+[node name="BeingDetectByPlayer" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeingDetectByPlayer"]
+shape = SubResource("CircleShape2D_8rjsn")

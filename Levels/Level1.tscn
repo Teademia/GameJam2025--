@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtck82cwc38wq"]
+[gd_scene load_steps=12 format=3 uid="uid://dtck82cwc38wq"]
 
 [ext_resource type="PackedScene" uid="uid://bjyfpkps0tcie" path="res://Entity/Entity.tscn" id="1_sx3nl"]
 [ext_resource type="Script" path="res://Script/Hero.gd" id="2_0ewva"]
+[ext_resource type="Script" path="res://Script/IconScript/BiliBili.gd" id="3_pq2tx"]
+[ext_resource type="PackedScene" uid="uid://rsgupea7g8am" path="res://Entity/BiliBili/Bullet.tscn" id="4_jygal"]
+[ext_resource type="Script" path="res://Script/IconScript/QQMusic.gd" id="5_ktqij"]
+[ext_resource type="PackedScene" uid="uid://h6d4hnf573y1" path="res://Entity/QQMusic/QQ-Guide.tscn" id="6_cnhyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8q8kf"]
 size = Vector2(1920, 100)
@@ -37,22 +41,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6bsr3"]
+radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5302"]
+size = Vector2(300, 30)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(960, 1040)
+position = Vector2(962, 1101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_8q8kf")
-
-[node name="Entity" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(412, 830)
 
 [node name="PlayerSpwaner" type="Node2D" parent="."]
 position = Vector2(1918, 250)
 
 [node name="Hero" type="CharacterBody2D" parent="."]
-position = Vector2(1921, 247)
+position = Vector2(985, 1000)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_0ewva")
@@ -62,4 +69,35 @@ shape = SubResource("CircleShape2D_al0uv")
 
 [node name="Anis" type="AnimatedSprite2D" parent="Hero"]
 sprite_frames = SubResource("SpriteFrames_dki81")
-animation = &"Death"
+animation = &"Jump-3"
+
+[node name="Area2D" type="Area2D" parent="Hero"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/Area2D"]
+shape = SubResource("CircleShape2D_6bsr3")
+
+[node name="BiliBili" parent="." instance=ExtResource("1_sx3nl")]
+position = Vector2(418, 891)
+
+[node name="BiliR" type="Node2D" parent="BiliBili" node_paths=PackedStringArray("Root")]
+script = ExtResource("3_pq2tx")
+Root = NodePath("..")
+BulletScene = ExtResource("4_jygal")
+
+[node name="QQMusic" parent="." instance=ExtResource("1_sx3nl")]
+position = Vector2(1514, 470)
+
+[node name="QQMR" type="Node2D" parent="QQMusic" node_paths=PackedStringArray("Root")]
+script = ExtResource("5_ktqij")
+Root = NodePath("..")
+BulletScene = ExtResource("6_cnhyw")
+fire_direction = Vector2(1, 1)
+
+[node name="Stage1" type="StaticBody2D" parent="."]
+position = Vector2(1688, 435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage1"]
+position = Vector2(81, -149)
+shape = SubResource("RectangleShape2D_l5302")
