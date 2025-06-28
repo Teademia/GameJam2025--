@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qtucgan7526"]
+
+[ext_resource type="Script" path="res://Entity/09-Trash/TrashChoose.gd" id="1_5a6n3"]
+
+[node name="TrashChoose" type="CanvasLayer"]
+script = ExtResource("1_5a6n3")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -74.0
+offset_right = 152.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Bilibili"
+popup/item_1/text = "Trash"
+popup/item_1/id = 1
+popup/item_2/text = "FileFolder"
+popup/item_2/id = 2
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -543.0
+offset_right = 154.0
+offset_bottom = -443.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label2" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "确认"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -433.0
+offset_right = 157.0
+offset_bottom = -333.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label2" type="Label" parent="Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "不删除"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -248.0
+offset_right = 152.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "你要删除一个软件么？"
+horizontal_alignment = 1
+vertical_alignment = 1

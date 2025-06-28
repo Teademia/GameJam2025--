@@ -59,7 +59,7 @@ size = Vector2(300, 30)
 [node name="Level1" type="Node2D"]
 
 [node name="Hero" type="CharacterBody2D" parent="." node_paths=PackedStringArray("TrashBanPosition", "BiliEmiter")]
-position = Vector2(-922, 9)
+position = Vector2(1787, 158)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_0ewva")
@@ -93,8 +93,7 @@ shape = SubResource("RectangleShape2D_8q8kf")
 position = Vector2(1918, 250)
 
 [node name="01-QQMusic" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(1527, 354)
-Name = "QQMusic"
+position = Vector2(1500, 500)
 
 [node name="QQMR" type="Node2D" parent="01-QQMusic" node_paths=PackedStringArray("Root")]
 script = ExtResource("5_ktqij")
@@ -114,11 +113,12 @@ vertical_alignment = 1
 
 [node name="02-FlyBook" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(1300, 500)
-Name = "FlyBook"
 
 [node name="FlyBookR" type="Node2D" parent="02-FlyBook" node_paths=PackedStringArray("Root")]
 script = ExtResource("5_77t7o")
 Root = NodePath("..")
+distance = null
+speed = null
 
 [node name="FlyBook" type="Label" parent="02-FlyBook"]
 offset_left = -75.0
@@ -130,17 +130,16 @@ text = "FlyBook"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DetectLeave" type="Area2D" parent="02-FlyBook"]
+[node name="Area2D" type="Area2D" parent="02-FlyBook"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="02-FlyBook/DetectLeave"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="02-FlyBook/Area2D"]
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_5w8ge")
 
 [node name="03-Steam" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(632, 496)
-Name = "Steam"
 
 [node name="SteamR" type="Node2D" parent="03-Steam" node_paths=PackedStringArray("Root")]
 script = ExtResource("7_mjkor")
@@ -158,7 +157,6 @@ vertical_alignment = 1
 
 [node name="04-Wechat" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(328, 546)
-Name = "Wechat"
 
 [node name="Text" type="Label" parent="04-Wechat"]
 offset_left = -75.0
@@ -170,33 +168,28 @@ text = "Wechat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WechatR" type="Node2D" parent="04-Wechat" node_paths=PackedStringArray("Root", "SketIns")]
+[node name="WechatR" type="Node2D" parent="04-Wechat"]
 script = ExtResource("7_o6aly")
-Root = NodePath("..")
-SketIns = NodePath("../../05-Sketch/SketchR")
 
 [node name="05-Sketch" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(116, 749)
-Name = "Sketch"
+position = Vector2(44, 793)
 
 [node name="Text" type="Label" parent="05-Sketch"]
-offset_left = -205.0
-offset_top = -103.0
-offset_right = 195.0
-offset_bottom = 28.0
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = -6.0
 theme_override_font_sizes/font_size = 50
-text = "超级无敌暴龙战士
-杀人铅笔"
+text = "Sketch"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SketchR" type="Node2D" parent="05-Sketch" node_paths=PackedStringArray("Root")]
+[node name="Sketch" type="Node2D" parent="05-Sketch" node_paths=PackedStringArray("Root")]
 script = ExtResource("8_avq3q")
 Root = NodePath("..")
 
 [node name="06-Google" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(-284, 760)
-Name = "Google"
+position = Vector2(325, 1002)
 
 [node name="Text" type="Label" parent="06-Google"]
 offset_left = -75.0
@@ -214,8 +207,7 @@ Root = NodePath("..")
 NextEntity = NodePath("../../07-Edge")
 
 [node name="07-Edge" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(-1247, 165)
-Name = "Edge"
+position = Vector2(-771, 213)
 
 [node name="Text" type="Label" parent="07-Edge"]
 offset_left = -75.0
@@ -227,11 +219,10 @@ text = "Edge"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="08-FileFolder" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(-927, 284)
-Name = "FileFolder"
+[node name="08-File" parent="." instance=ExtResource("1_sx3nl")]
+position = Vector2(-451, 332)
 
-[node name="Text" type="Label" parent="08-FileFolder"]
+[node name="Text" type="Label" parent="08-File"]
 offset_left = -75.0
 offset_top = -75.0
 offset_right = 75.0
@@ -242,8 +233,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="09-Trash" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(-932, 566)
-Name = "Trash"
+position = Vector2(-456, 614)
 
 [node name="Text" type="Label" parent="09-Trash"]
 offset_left = -75.0
@@ -256,13 +246,13 @@ text = "Trash
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TrashR" type="Node2D" parent="09-Trash" node_paths=PackedStringArray("Root")]
+[node name="TrashR" type="Node2D" parent="09-Trash" node_paths=PackedStringArray("Root", "Bili")]
 script = ExtResource("10_4utfe")
 Root = NodePath("..")
+Bili = NodePath("../../10-BiliBili/BiliR")
 
 [node name="10-BiliBili" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(-929, 856)
-Name = "Bilibili"
+position = Vector2(-453, 904)
 
 [node name="BiliR" type="Node2D" parent="10-BiliBili" node_paths=PackedStringArray("Root")]
 position = Vector2(828, -294)

@@ -14,11 +14,10 @@ func _ready() -> void:
 	$Area2D.area_entered.connect(DeathByBullet)
 	
 func DeathByBullet(area:Area2D)->void:
-	global_position=TrashBanPosition.global_position+Vector2(0,-200)
-	BiliEmiter.StopAndClearBullet()
+	ExUManager.GameLose()
 	
 func Death()->void:
-	ExUManager.GameWin()
+	ExUManager.GameLose()
 	
 func _physics_process(delta: float) -> void:
 	### 1. 垂直方向：模拟重力

@@ -6,3 +6,6 @@ extends Node
 func GameWin()->void:
 	var CurrentScene=get_tree().current_scene
 	CurrentScene.add_child(load(GameWinScenePath).instantiate())
+
+func GameLose()->void:
+	ExSceneManager.Reload()
