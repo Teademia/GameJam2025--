@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://x8j5rida1ef2"]
+
+[ext_resource type="Script" path="res://Script/Hero.gd" id="1_cj5hr"]
+[ext_resource type="Script" path="res://Script/DetectPlayer.gd" id="2_quiua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3vkl"]
+radius = 50.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfnm3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump-1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump-2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump-3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfjbl"]
+size = Vector2(500, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x2ft"]
+size = Vector2(1920, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_110v5"]
+radius = 300.0
+
+[node name="Root" type="Node2D"]
+
+[node name="Hero" type="CharacterBody2D" parent="."]
+position = Vector2(81, 845)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_cj5hr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero"]
+shape = SubResource("CircleShape2D_r3vkl")
+
+[node name="Anis" type="AnimatedSprite2D" parent="Hero"]
+sprite_frames = SubResource("SpriteFrames_yfnm3")
+animation = &"Death"
+
+[node name="Stage1" type="StaticBody2D" parent="."]
+position = Vector2(656, 816)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage1"]
+shape = SubResource("RectangleShape2D_lfjbl")
+
+[node name="Stage2" type="StaticBody2D" parent="."]
+position = Vector2(1123, 638)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage2"]
+shape = SubResource("RectangleShape2D_lfjbl")
+
+[node name="Stage3" type="StaticBody2D" parent="."]
+position = Vector2(1571, 461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage3"]
+shape = SubResource("RectangleShape2D_lfjbl")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(960, 1040)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_5x2ft")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(956, 54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+shape = SubResource("RectangleShape2D_5x2ft")
+
+[node name="DetectPlayer" type="Area2D" parent="."]
+position = Vector2(1920, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_quiua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer"]
+shape = SubResource("CircleShape2D_110v5")

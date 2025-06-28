@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjyfpkps0tcie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ldy6"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iij1r"]
+size = Vector2(80, 80)
+
+[node name="Entity" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="DetectPlayer-Layer1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer-Layer1"]
+shape = SubResource("RectangleShape2D_0ldy6")
+
+[node name="StaticArea" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticArea"]
+shape = SubResource("RectangleShape2D_iij1r")

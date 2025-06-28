@@ -1,0 +1,2 @@
+extends DesktopIcon
+class_name TrashBin
