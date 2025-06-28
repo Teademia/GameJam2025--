@@ -9,3 +9,4 @@ func _ready() -> void:
 
 func Transmit()->void:
 	PlayerRegisterPoint.CurrentHero.global_position=NextEntity.global_position+Vector2(0,-200)
+	PlayerRegisterPoint.CurrentHero.velocity=Vector2.ZERO

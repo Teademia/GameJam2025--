@@ -5,7 +5,7 @@ signal SoftWareDeleted
 func _ready() -> void:
 	$Button.pressed.connect(Delete)
 	$Button2.pressed.connect(NoDelete)
-
+	get_tree().paused=true
 		
 func Delete()->void:
 	match $OptionButton.selected:
@@ -15,7 +15,9 @@ func Delete()->void:
 			SoftWareDeleted.emit("Trash")
 		2:
 			SoftWareDeleted.emit("FileFolder")
+	get_tree().paused=false
 	queue_free()
 	
 func NoDelete()->void:
+	get_tree().paused=false
 	queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://h6d4hnf573y1"]
 
 [ext_resource type="Script" path="res://Entity/01-QQMusic/QQGuide.gd" id="1_mnyrn"]
-[ext_resource type="Texture2D" uid="uid://i8yxdaktrxdt" path="res://Art/音符.png" id="2_7yq6q"]
+[ext_resource type="Texture2D" uid="uid://i8yxdaktrxdt" path="res://Art/Icon/音符.png" id="2_7yq6q"]
 
 [node name="QQGuide" type="Node2D"]
 script = ExtResource("1_mnyrn")

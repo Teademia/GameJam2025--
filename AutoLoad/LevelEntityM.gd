@@ -1,7 +1,7 @@
 extends Node
 
 var DesktopIconDic: Dictionary = {}
-
+var GridSize:int=300
 func Register(nm: String, ins: DesktopIcon) -> void:
 	if not DesktopIconDic.has(nm):
 		DesktopIconDic[nm] = ins

@@ -1,24 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtck82cwc38wq"]
+[gd_scene load_steps=17 format=3 uid="uid://dtck82cwc38wq"]
 
 [ext_resource type="PackedScene" uid="uid://bjyfpkps0tcie" path="res://Entity/Entity.tscn" id="1_sx3nl"]
 [ext_resource type="Script" path="res://Script/Hero.gd" id="2_0ewva"]
-[ext_resource type="Texture2D" uid="uid://bj7obhmyy3xm6" path="res://Art/Character/Walk-1.png" id="2_irfwc"]
-[ext_resource type="Texture2D" uid="uid://csf8e0jq7e71b" path="res://Art/Icon/QQMusic.png" id="3_1d1iq"]
-[ext_resource type="Texture2D" uid="uid://ca5hdu6r75u1o" path="res://Art/Character/Walk-1.5 - 副本.png" id="3_ffyq1"]
 [ext_resource type="Script" path="res://Script/IconScript/BiliBili.gd" id="3_pq2tx"]
-[ext_resource type="Texture2D" uid="uid://do6lmwcju7j67" path="res://Art/Character/Walk-3.png" id="4_fub62"]
 [ext_resource type="PackedScene" uid="uid://rsgupea7g8am" path="res://Entity/BiliBili/Bullet.tscn" id="4_jygal"]
 [ext_resource type="Script" path="res://Entity/02-FlyBook/FlyBookR.gd" id="5_77t7o"]
-[ext_resource type="Texture2D" uid="uid://cv1pvuo7c00sk" path="res://Art/Character/Walk-3.5.png" id="5_u6xne"]
-[ext_resource type="Texture2D" uid="uid://pxt50rb80vgw" path="res://Art/Character/Walk-4.png" id="6_1mkmq"]
 [ext_resource type="Script" path="res://Entity/03-Steam/SteamR.gd" id="7_mjkor"]
 [ext_resource type="Script" path="res://Entity/04-Wechat/WechatR.gd" id="7_o6aly"]
 [ext_resource type="Script" path="res://Entity/05-Sketch/SketchR.gd" id="8_avq3q"]
 [ext_resource type="Script" path="res://Entity/06-Google/GoogleR.gd" id="9_s5r1x"]
 [ext_resource type="Script" path="res://Entity/09-Trash/TrashR.gd" id="10_4utfe"]
-[ext_resource type="Script" path="res://Levels/TimerR.gd" id="12_ywy4d"]
 [ext_resource type="Script" path="res://Levels/Speeder.gd" id="13_40600"]
-[ext_resource type="Script" path="res://Levels/DingTalkR.gd" id="19_s23jr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al0uv"]
 radius = 50.0
@@ -45,22 +37,7 @@ animations = [{
 "name": &"Jump-3",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_irfwc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ffyq1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_fub62")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_u6xne")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_1mkmq")
-}],
+"frames": [],
 "loop": true,
 "name": &"Move",
 "speed": 5.0
@@ -72,35 +49,39 @@ radius = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w8ge"]
 size = Vector2(80, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q8kf"]
+size = Vector2(3850, 100)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Hero" type="CharacterBody2D" parent="." node_paths=PackedStringArray("TrashBanPosition", "BiliEmiter")]
-position = Vector2(1781, 142)
+position = Vector2(3840, -2160)
 collision_layer = 2
 script = ExtResource("2_0ewva")
-jump_velocity = -700.0
+move_speed = 500.0
+jump_velocity = -1000.0
 TrashBanPosition = NodePath("../09-Trash")
 BiliEmiter = NodePath("../10-BiliBili/BiliR")
 xgrid = 14
-ygrid = 3
+ygrid = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero"]
 shape = SubResource("CircleShape2D_al0uv")
 
 [node name="Anis" type="AnimatedSprite2D" parent="Hero"]
-position = Vector2(0, -80)
-scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_dki81")
-animation = &"Move"
-autoplay = "Move"
+animation = &"Jump-3"
 
 [node name="Area2D" type="Area2D" parent="Hero"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/Area2D"]
 shape = SubResource("CircleShape2D_6bsr3")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
 
 [node name="01-QQMusic" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(1782, 311)
@@ -117,10 +98,6 @@ theme_override_font_sizes/font_size = 50
 text = "QQMusic"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="QqMusic" type="Sprite2D" parent="01-QQMusic"]
-position = Vector2(-1, 1)
-texture = ExtResource("3_1d1iq")
 
 [node name="02-FlyBook" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(1587, 309)
@@ -198,7 +175,7 @@ SketIns = NodePath("../../05-Sketch/SketchR")
 position = Vector2(820, 742)
 Name = "Sketch"
 xgrid = 9
-ygrid = 3
+ygrid = 4
 
 [node name="Text" type="Label" parent="05-Sketch"]
 offset_left = -205.0
@@ -253,7 +230,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="08-FileFolder" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(259, 281)
+position = Vector2(-236, 516)
 Name = "FileFolder"
 xgrid = 3
 ygrid = 6
@@ -269,7 +246,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="09-Trash" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(257, 509)
+position = Vector2(-549, 274)
 Name = "Trash"
 xgrid = 3
 ygrid = 5
@@ -290,7 +267,7 @@ script = ExtResource("10_4utfe")
 Root = NodePath("..")
 
 [node name="10-BiliBili" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(420, 515)
+position = Vector2(-881, 631)
 Name = "Bilibili"
 xgrid = 4
 ygrid = 5
@@ -312,7 +289,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="11-NoteBook" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(420, 750)
+position = Vector2(-890, 869)
 Name = "NoteBook"
 xgrid = 4
 ygrid = 3
@@ -328,7 +305,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="12-Speeder" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(426, 939)
+position = Vector2(-1268, 738)
 Name = "Speeder"
 xgrid = 5
 ygrid = 2
@@ -347,7 +324,7 @@ vertical_alignment = 1
 position = Vector2(-746, -50)
 script = ExtResource("13_40600")
 Root = NodePath("..")
-Target = NodePath("../../13-Timer")
+Target = NodePath("../../13-DingTalk")
 
 [node name="DetectLeave" type="Area2D" parent="12-Speeder"]
 collision_layer = 2
@@ -357,43 +334,13 @@ collision_mask = 2
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_5w8ge")
 
-[node name="13-Timer" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(1578, 924)
-Name = "Timer"
-xgrid = 13
-ygrid = 2
-
-[node name="Text" type="Label" parent="13-Timer"]
-offset_left = -109.0
-offset_top = -73.0
-offset_right = 132.0
-offset_bottom = -4.0
-theme_override_font_sizes/font_size = 50
-text = "时钟"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TimerR" type="Node2D" parent="13-Timer" node_paths=PackedStringArray("Root")]
-script = ExtResource("12_ywy4d")
-Root = NodePath("..")
-
-[node name="CountDown" type="Label" parent="13-Timer/TimerR"]
-offset_left = -40.0
-offset_top = -121.0
-offset_right = 40.0
-offset_bottom = -41.0
-theme_override_font_sizes/font_size = 50
-text = "5"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="14-DingTalk" parent="." instance=ExtResource("1_sx3nl")]
-position = Vector2(1798, 924)
+[node name="13-DingTalk" parent="." instance=ExtResource("1_sx3nl")]
+position = Vector2(-2421, -78)
 Name = "Dingtalk"
 xgrid = 14
 ygrid = 2
 
-[node name="Text" type="Label" parent="14-DingTalk"]
+[node name="Text" type="Label" parent="13-DingTalk"]
 offset_left = -109.0
 offset_top = -73.0
 offset_right = 132.0
@@ -404,20 +351,17 @@ text = "钉钉
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DingTalkR" type="Node2D" parent="14-DingTalk" node_paths=PackedStringArray("Root", "Target")]
-position = Vector2(-746, -50)
-script = ExtResource("19_s23jr")
-Root = NodePath("..")
-Target = NodePath("../../07-Edge")
-
-[node name="DetectLeave" type="Area2D" parent="14-DingTalk"]
+[node name="DetectLeave" type="Area2D" parent="13-DingTalk"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="14-DingTalk/DetectLeave"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="13-DingTalk/DetectLeave"]
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_5w8ge")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3214, -1814)
-zoom = Vector2(0.3, 0.3)
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(949, 1148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-951, -4)
+shape = SubResource("RectangleShape2D_8q8kf")

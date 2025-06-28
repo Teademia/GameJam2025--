@@ -2,8 +2,8 @@ extends Node2D
 
 @export var Root: DesktopIcon
 @export var Target: Node2D  # 目标节点
-@export var speed: float = 100  # 每秒移动像素
-@export var arrival_tolerance: float = 50.0  # 到达判定范围（像素）
+@export var speed: float = 300  # 每秒移动像素
+@export var arrival_tolerance: float = 200  # 到达判定范围（像素）
 
 var moving := false
 var hero_original_parent: Node = null

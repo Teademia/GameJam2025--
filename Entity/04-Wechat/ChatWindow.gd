@@ -7,11 +7,14 @@ signal Choose2s
 func _ready() -> void:
 	$Choose1.pressed.connect(Choose1)
 	$Choose2.pressed.connect(Choose2)
+	get_tree().paused=true
 
 func Choose1()->void:
+	get_tree().paused=false
 	Choose1s.emit()
 	queue_free()
 
 func Choose2()->void:
+	get_tree().paused=false
 	Choose2s.emit()
 	queue_free()
