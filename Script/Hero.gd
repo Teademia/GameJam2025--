@@ -30,3 +30,5 @@ func _physics_process(delta: float) -> void:
 
 	### 4. 执行移动并自动处理碰撞
 	move_and_slide()
+	
+	
