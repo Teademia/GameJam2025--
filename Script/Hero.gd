@@ -4,14 +4,20 @@ class_name Hero
 ## === 可在检视器里改的导出变量 ===
 @export var move_speed      : float = 400.0   # 水平移动速度 (像素/秒)
 @export var jump_velocity   : float = -800.0  # 起跳初始速度 (负值向上)
-
+@export var TrashBanPosition:DesktopIcon
+@export var BiliEmiter:Emiter
 ## === 内部常量 ===
 # 使用项目设置里的全局重力；如果想手动设置，请改成固定数值
 var GRAVITY : float = 1200
 func _ready() -> void:
-	$Area2D.area_entered.connect(Death)
+	PlayerRegisterPoint.CurrentHero=self
+	$Area2D.area_entered.connect(DeathByBullet)
 	
-func Death(area:Area2D)->void:
+func DeathByBullet(area:Area2D)->void:
+	global_position=TrashBanPosition.global_position+Vector2(0,-200)
+	BiliEmiter.StopAndClearBullet()
+	
+func Death()->void:
 	ExUManager.GameWin()
 	
 func _physics_process(delta: float) -> void:
@@ -27,6 +33,11 @@ func _physics_process(delta: float) -> void:
 	### 3. 跳跃（可选）
 	if Input.is_action_just_pressed("W") and is_on_floor():
 		velocity.y = jump_velocity
+		
+	if Input.is_action_just_pressed("S"):
+		$CollisionShape2D.disabled = true
+		await get_tree().create_timer(0.5).timeout  # 0.3秒后恢复碰撞
+		$CollisionShape2D.disabled = false
 
 	### 4. 执行移动并自动处理碰撞
 	move_and_slide()

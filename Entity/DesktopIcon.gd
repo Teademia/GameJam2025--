@@ -3,7 +3,7 @@ class_name DesktopIcon
 
 signal HeroEnter
 signal HeroWantToInteract
-
+signal HeroLeave
 func _ready() -> void:
 	$"DetectPlayer-Layer1".body_entered.connect(DetectHero)
 	
@@ -11,5 +11,9 @@ func Interact()->void:
 	HeroWantToInteract.emit()
 
 func DetectHero(body: Node2D) -> void:
-	print("HeroEnterDetct")
+	#print("DetectHero")
 	HeroEnter.emit()
+
+func FHeroLeave(body: Node2D) -> void:
+	#print("FHeroLeave")
+	HeroLeave.emit()

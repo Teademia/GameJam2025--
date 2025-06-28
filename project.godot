@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 ExUManager="*res://AutoLoad/UIManager.gd"
 ExSceneManager="*res://AutoLoad/SceneManager.gd"
+PlayerRegisterPoint="*res://AutoLoad/PlayerRegisterPoint.gd"
 
 [display]
 

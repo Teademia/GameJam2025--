@@ -3,7 +3,7 @@ extends Node2D
 @export var Root: DesktopIcon
 @export var BulletScene: PackedScene
 @export var shoot_interval := 0.1        # 发射间隔更快（如0.1秒一次）
-@export var bullets_per_shot := 5        # 每次发射的音符数
+@export var bullets_per_shot := 1        # 每次发射的音符数
 @export var fire_direction := Vector2.DOWN  # 固定发射方向
 @export var horizontal_spread := 100.0   # 横向发射范围（像素）
 @export var is_looping := true
