@@ -1,74 +1,146 @@
 extends CharacterBody2D
 class_name Hero
 
-## === 可在检视器里改的导出变量 ===
-@export var move_speed      : float = 400.0   # 水平移动速度 (像素/秒)
-@export var jump_velocity   : float = -800.0  # 起跳初始速度 (负值向上)
-@export var TrashBanPosition:DesktopIcon
-@export var BiliEmiter:Emiter
+@export var move_speed      : float = 400.0
+@export var jump_velocity   : float = -800.0
+@export var TrashBanPosition: DesktopIcon
+@export var BiliEmiter      : Emiter
+@export var xgrid           : int
+@export var ygrid           : int
 
-@export var xgrid:int
-@export var ygrid:int
-## === 内部常量 ===
-# 使用项目设置里的全局重力；如果想手动设置，请改成固定数值
 var GRAVITY : float = 1200
+var velocity_y_pending := false
+
+# 状态名
+var CurrentState: String = "Idle"
+
+# 输入变量
+var input_dir: float = 0.0
+var is_jump_pressed: bool = false
+var AlreadyDeath:bool
+
 func _ready() -> void:
-	PlayerRegisterPoint.CurrentHero=self
+	PlayerRegisterPoint.CurrentHero = self
 	$Area2D.area_entered.connect(DeathByBullet)
 
-	# 每个图标的格子尺寸（你可以调整）
-	var cell_width: float =ExLevelEntityM.GridSize
+	var cell_width: float = ExLevelEntityM.GridSize
 	var cell_height: float = ExLevelEntityM.GridSize
 
-	# 世界尺寸（右上为原点，需转换）
-	var world_width: float =0
-	var world_height: float =0
+func DeathByBullet(area: Area2D) -> void:
+	if !AlreadyDeath:
+		Death()
+		AlreadyDeath=true
 
-	# 计算实际位置
-	var x = xgrid *cell_width
-	var y = -ygrid * cell_height
+func Death() -> void:
+	if !AlreadyDeath:
+		change_state("Die")
+		ExUManager.GameLose()
+		ExMusicManager.PlaySFX("res://Music/Death/Death_SFX.wav")
+		AlreadyDeath=true
 
-	position = Vector2(x, y)
-func DeathByBullet(area:Area2D)->void:
-	ExUManager.GameLose()
+func DeathToZero()->void:
+	if !AlreadyDeath:
+		change_state("Die")
+		scale=Vector2(1,0.1)
+		ExUManager.GameLose()
+		AlreadyDeath=true
 	
-func Death()->void:
-	ExUManager.GameLose()
-
-func EnterNoMaskState()->void:
-	$CollisionShape2D.disabled=true
-	$Area2D/CollisionShape2D.disabled=true
-	GRAVITY=0
-
-func LeaveNoMaskState()->void:
-	$CollisionShape2D.disabled=false
-	$Area2D/CollisionShape2D.disabled=false
-	GRAVITY=1200
-
 func _physics_process(delta: float) -> void:
-	### 1. 垂直方向：模拟重力
+	# === 输入采集 ===
+
+	# 重力作用
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
-
-	### 2. 水平方向：读取 A/D（或 ←/→）
-	var input_dir := Input.get_action_strength("D") - Input.get_action_strength("A")
-	velocity.x = input_dir * move_speed
-	if input_dir<0:
-		$Anis.flip_h=true
-	elif input_dir!=0:
-		$Anis.flip_h=false
-
-	### 3. 跳跃（可选）
-	if Input.is_action_just_pressed("W") and is_on_floor():
-		velocity.y = jump_velocity
-		
+	# 下穿平台
 	if Input.is_action_just_pressed("S"):
 		$CollisionShape2D.disabled = true
-		await get_tree().create_timer(0.5).timeout  # 0.3秒后恢复碰撞
+		await get_tree().create_timer(0.5).timeout
 		$CollisionShape2D.disabled = false
 
-	### 4. 执行移动并自动处理碰撞
+	# 状态驱动
+	FindNextState()
+	HandleState()
+
+	# 翻转角色朝向
+	if input_dir != 0:
+		$Anis.flip_h = input_dir < 0
+
+	# 应用移动
 	move_and_slide()
-	
-	
+	if global_position.y>3000:
+		Death()
+	if global_position.y<-2400 and is_on_floor():
+		DeathToZero()
+
+func FindNextState():
+	input_dir = Input.get_action_strength("D") - Input.get_action_strength("A")
+	is_jump_pressed = Input.is_action_just_pressed("W")
+	if is_jump_pressed:
+		print("JumpPressed")
+		if is_on_floor():
+			print("CanJump")
+			ExMusicManager.PlaySFX("res://Music/Hit_SFX.wav")
+	match CurrentState:
+		"Idle":
+			if is_jump_pressed and is_on_floor():
+				change_state("Jump")
+			elif abs(input_dir) > 0:
+				change_state("Move")
+		"Move":
+			if is_jump_pressed and is_on_floor():
+				change_state("Jump")
+			elif abs(input_dir) == 0:
+				change_state("Idle")
+		"Jump":
+			if is_on_floor():
+				change_state("Idle")
+		"RaisedByAir":
+			if is_on_floor():
+				change_state("Idle")
+		"Die":
+			pass  # 死亡不可跳出
+
+func HandleState():
+	match CurrentState:
+		"Idle":
+			velocity.x = 0
+			if $Anis.animation != "Idle":
+				$Anis.play("Idle")
+
+		"Move":
+			velocity.x = input_dir * move_speed
+			if $Anis.animation != "Run":
+				$Anis.play("Run")
+
+		"Jump":
+			velocity.x = input_dir * move_speed
+			if $Anis.animation != "Jump-1":
+				$Anis.play("Jump-1")
+
+		"RaisedByAir":
+			velocity.x = input_dir * move_speed
+			if $Anis.animation != "Jump-2":
+				$Anis.play("Jump-2")
+
+		"Die":
+			velocity.x = 0
+			if $Anis.animation != "Die":
+				$Anis.play("Die")
+
+func change_state(new_state: String):
+	if CurrentState == new_state:
+		return
+	CurrentState = new_state
+	match new_state:
+		"Idle":
+			$Anis.play("Idle")
+		"Move":
+			$Anis.play("Move")
+		"Jump":
+			$Anis.play("Jump-1")
+			velocity.y=jump_velocity
+		"RaisedByAir":
+			$Anis.play("Falling")
+		"Die":
+			$Anis.play("Death")

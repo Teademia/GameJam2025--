@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://mlk1jl6aeuyk"]
+
+[ext_resource type="Script" path="res://Levels/EnterGame.gd" id="1_bb1jg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stgio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a62n0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gftid"]
+
+[sub_resource type="Theme" id="Theme_hcr5x"]
+TextEdit/font_sizes/font_size = 60
+TextEdit/fonts/font = null
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_stgio")
+TextEdit/styles/normal = SubResource("StyleBoxEmpty_a62n0")
+TextEdit/styles/read_only = SubResource("StyleBoxEmpty_gftid")
+
+[node name="EnterGame" type="CanvasLayer"]
+script = ExtResource("1_bb1jg")
+
+[node name="BackGround" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -271.0
+offset_right = 200.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_hcr5x")
+text = "123"

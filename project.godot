@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="少年维特之烦恼"
-run/main_scene="res://Levels/Level1.tscn"
+run/main_scene="res://Levels/EnterGame.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout="res://Version1.tres"
 
 [autoload]
 
@@ -20,11 +24,13 @@ ExUManager="*res://AutoLoad/UIManager.gd"
 ExSceneManager="*res://AutoLoad/SceneManager.gd"
 PlayerRegisterPoint="*res://AutoLoad/PlayerRegisterPoint.gd"
 ExLevelEntityM="*res://AutoLoad/LevelEntityM.gd"
+ExMusicManager="*res://AutoLoad/MusicManager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 
 [input]
 
@@ -51,6 +57,11 @@ D={
 E={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":69,"location":0,"echo":false,"script":null)
+]
+}
+Enter={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

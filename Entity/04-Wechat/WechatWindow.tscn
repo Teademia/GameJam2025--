@@ -3,7 +3,16 @@
 [ext_resource type="Script" path="res://Entity/04-Wechat/ChatWindow.gd" id="1_mhpne"]
 
 [node name="WechatWindow" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_mhpne")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.623529)
 
 [node name="Choose1" type="Button" parent="."]
 anchors_preset = 8
@@ -11,10 +20,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -140.0
-offset_right = 150.0
-offset_bottom = -90.0
+offset_left = -141.0
+offset_top = 90.0
+offset_right = 159.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -35,10 +44,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -25.0
-offset_right = 150.0
-offset_bottom = 25.0
+offset_left = -141.0
+offset_top = 205.0
+offset_right = 159.0
+offset_bottom = 255.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -50,5 +59,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "别骚扰我行吗"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1025.0
+offset_top = 235.0
+offset_right = 1047.0
+offset_bottom = 565.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "你的同事小李
+他精神憔悴
+忽然看着你笑了笑
+他为什么在这时候发微信给你
+...................
+“哦？你也来了啊——”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ChooseText1" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1025.0
+offset_top = 235.0
+offset_right = 1047.0
+offset_bottom = 565.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "小李意味深长地看了你一眼
+随后走到窗边一跃而下"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ChooseText2" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1025.0
+offset_top = 235.0
+offset_right = 1047.0
+offset_bottom = 565.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "小李阴冷地看着你
+死亡这种事情不是很常见吗？大家继续麻木地做着自己的工作。
+窗外的太阳有些刺眼。
+工作量又增加了
+我真是受够了
+总有一天我要把这些工作全都扔了全部都给我呆进回收站吧！"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Ensure" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 301.0
+offset_right = 156.0
+offset_bottom = 351.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Ensure"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "确定"
 horizontal_alignment = 1
 vertical_alignment = 1

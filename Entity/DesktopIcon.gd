@@ -2,7 +2,6 @@ extends Node2D
 class_name DesktopIcon
 @export var Name:String
 signal HeroEnter
-signal HeroWantToInteract
 signal HeroLeave
 
 @export var xgrid:int
@@ -22,16 +21,18 @@ func _ready() -> void:
 	# 计算实际位置
 	var x = xgrid *cell_width
 	var y = -ygrid * cell_height
-
-	position = Vector2(x, y)
-
+	$"../04-Wechat/Dying".visible=false
 	
-func Interact()->void:
-	HeroWantToInteract.emit()
+func DActivate()->void:
+	visible=false
 
+func Activate()->void:
+	visible=true
+	
 func DetectHero(body: Node2D) -> void:
-	#print("DetectHero")
+	print("DetectHero")
 	HeroEnter.emit()
+	ExMusicManager.PlaySFX("res://Music/SFX/hitground_SFX.wav")
 
 func FHeroLeave(body: Node2D) -> void:
 	#print("FHeroLeave")

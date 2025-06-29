@@ -15,8 +15,11 @@ func BeginChat()->void:
 func Choose(seq:int)->void:
 	match seq:
 		1:
-			SketIns.ChangeText("友善的不杀人铅笔")
 			SketIns.queue_free()
+			$"../Wechat".play("1")
+			$"../../05-Sketch/Ani".play("1")
+			$"../AnimationPlayer".play("Die")
 		2:
-			pass
+			$"../Wechat".play("2")
+			$"../../05-Sketch/Ani".play("2")
 	queue_free()

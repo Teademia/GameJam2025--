@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://cejs00sgwmvf3"]
+
+[ext_resource type="Script" path="res://Entity/11-NoteBook/NoteBookWindow.gd" id="1_dt31i"]
+
+[node name="NoteBookChoose" type="CanvasLayer"]
+script = ExtResource("1_dt31i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.623529)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "2024年5月5日
+天气晴（背景变化）
+今天虽然是周末，工作量依旧没减少。
+回家了，我向妻子抱怨了一堆今天的工作，包括那些遇到的破烂事———她笑了笑，给我递了杯水，“辛苦了。”
+
+2024年5月6日
+天气晴
+周一啊，完全和之前没什么两样，有时候真的怀疑我每天都在循环。
+
+2024年5月7日
+天气晴
+小李自杀了，不知道为什么，他从七楼的窗户跳下去了。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ensure" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 279.0
+offset_right = 158.0
+offset_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Ensure"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "关闭"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,10 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjyfpkps0tcie"]
+[gd_scene load_steps=4 format=3 uid="uid://bjyfpkps0tcie"]
 
 [ext_resource type="Script" path="res://Entity/DesktopIcon.gd" id="1_jnbsr"]
-[ext_resource type="Texture2D" uid="uid://csf8e0jq7e71b" path="res://Art/Icon/QQMusic.png" id="2_ftl0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ldy6"]
-size = Vector2(140, 100)
+size = Vector2(140, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iij1r"]
 size = Vector2(140, 140)
@@ -13,17 +12,13 @@ size = Vector2(140, 140)
 script = ExtResource("1_jnbsr")
 
 [node name="DetectPlayer-Layer1" type="Area2D" parent="."]
-position = Vector2(-2, -120)
+position = Vector2(-2, -129)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer-Layer1"]
-position = Vector2(1, 0)
+position = Vector2(2, 48)
 shape = SubResource("RectangleShape2D_0ldy6")
-
-[node name="QqMusic" type="Sprite2D" parent="DetectPlayer-Layer1"]
-position = Vector2(4, 123)
-texture = ExtResource("2_ftl0i")
 
 [node name="StaticArea" type="StaticBody2D" parent="."]
 collision_mask = 0
