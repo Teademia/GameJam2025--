@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dtck82cwc38wq"]
+[gd_scene load_steps=112 format=3 uid="uid://dtck82cwc38wq"]
 
 [ext_resource type="Script" path="res://Levels/Script/Level1.gd" id="1_idnr6"]
 [ext_resource type="PackedScene" uid="uid://bjyfpkps0tcie" path="res://Entity/Entity.tscn" id="1_sx3nl"]
@@ -87,7 +87,6 @@
 [ext_resource type="Texture2D" uid="uid://dam2ivkderg5g" path="res://Art/Icon/Bili/Bad.png" id="62_ube3a"]
 [ext_resource type="Texture2D" uid="uid://stnuc4sfpr85" path="res://Art/Icon/Bili/Dead.png" id="63_62vad"]
 [ext_resource type="Texture2D" uid="uid://xcx312tkxokg" path="res://Art/Icon/Bili/Win.png" id="64_8l27y"]
-[ext_resource type="Texture2D" uid="uid://coj02invfpk1n" path="res://Art/Icon/Dingtalk.png" id="87_2p06l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al0uv"]
 radius = 50.0
@@ -1145,7 +1144,6 @@ shape = SubResource("RectangleShape2D_5w8ge")
 
 [node name="Dingtalk" type="Sprite2D" parent="14-DingTalk"]
 position = Vector2(2, 2.5)
-texture = ExtResource("87_2p06l")
 
 [node name="15-Win" parent="." instance=ExtResource("1_sx3nl")]
 position = Vector2(915, 1057)
